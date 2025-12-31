@@ -19,5 +19,8 @@ public class MenuItem implements Orderable {
     public String getInfo(){
         return itemName + " - " + itemPrice + "TL";
     }
+    if (price < 0) {
+    throw new IllegalArgumentException("Price cannot be negative");
+}
     
 }

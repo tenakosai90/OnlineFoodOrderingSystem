@@ -2,7 +2,10 @@ package foodorderingsystem;
 
 import java.util.ArrayList;
 import java.util.List;
-
+/**
+ * Represents a customer's order.
+ * An order contains menu items and calculates total price.
+ */
 public class Order {
 
     private Customer customer;
