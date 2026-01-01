@@ -1,10 +1,11 @@
 package foodorderingsystem;
+
 /*Polymorphism */
 public class CashPayment implements PaymentMethod{
 
     @Override
-    public String pay(double amount){
-        return "Paid " + amount + " TL in cash.";
+    public boolean pay(double amount){
+        return amount >=0; //always succeeds if amount is valid
     }
     
 }

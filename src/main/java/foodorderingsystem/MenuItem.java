@@ -1,26 +1,26 @@
 package foodorderingsystem;
-/*Implementation */
-public class MenuItem implements Orderable {
 
-    private String itemName;
-    private double itemPrice;
+public class MenuItem {
+    private String name;
+    private double price;
 
-    public MenuItem(String itemName, double itemPrice){
-        this.itemName = itemName;
-        this.itemPrice = itemPrice;
+    public MenuItem(String name, double price) {
+        if (price < 0) {
+            throw new IllegalArgumentException("Price cannot be negative");
+        }
+        this.name = name;
+        this.price = price;
     }
 
-    @Override
-    public double getPrice(){
-        return itemPrice;
+    public String getName() {
+        return name;
     }
 
-    @Override
-    public String getInfo(){
-        return itemName + " - " + itemPrice + "TL";
+    public double getPrice() {
+        return price;
     }
-    if (price < 0) {
-    throw new IllegalArgumentException("Price cannot be negative");
-}
-    
+
+    public String getInfo() {
+        return name + " - " + price + " TL";
+    }
 }

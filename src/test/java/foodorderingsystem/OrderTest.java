@@ -1,10 +1,6 @@
 package foodorderingsystem;
 
 import org.junit.jupiter.api.Test;
-
-import main.java.foodorderingsystem.MenuItem;
-import main.java.foodorderingsystem.Order;
-
 import static org.junit.jupiter.api.Assertions.*;
 
 public class OrderTest {
@@ -19,13 +15,13 @@ public class OrderTest {
         assertEquals(50.0, order.getTotalPrice(),
                 "Total price should be 50 after adding one item");
     }
+
     @Test
     void addMultipleItems_shouldSumPricesCorrectly() {
         Order order = new Order();
-
         order.addItem(new MenuItem("Pizza", 50.0));
         order.addItem(new MenuItem("Burger", 30.0));
 
         assertEquals(80.0, order.getTotalPrice());
-}
+    }
 }
