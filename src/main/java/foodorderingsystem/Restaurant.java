@@ -7,37 +7,45 @@ public class Restaurant {
 
     private int id;
     private String name;
-    private final List<MenuItem> menu = new ArrayList<>();
+    private List<MenuItem> menu;
 
-    // ✅ Needed because my tests use (1, "MyRestaurant")
+    // REQUIRED by tests
     public Restaurant(int id, String name) {
         this.id = id;
         this.name = name;
+        this.menu = new ArrayList<>();
     }
 
-    // ✅ Keep the original style too (optional)
+    // Optional (demo convenience)
     public Restaurant(String name) {
-        this.name = name;
-        this.id = 0;
+        this(0, name);
     }
 
-    public void addMenuItem(MenuItem item) {
-        menu.add(item);
+    public int getId() {
+        return id;
     }
 
-    // ✅ Needed by tests
-    public void removeMenuItem(MenuItem item) {
-        menu.remove(item);
+    public String getName() {
+        return name;
     }
 
     public List<MenuItem> getMenu() {
         return menu;
     }
 
+    public void addMenuItem(MenuItem item) {
+        menu.add(item);
+    }
+
+    // REQUIRED by tests
+    public void removeMenuItem(MenuItem item) {
+        menu.remove(item);
+    }
+
     public void showMenu() {
-        System.out.println("=== " + name + " MENU ===");
-        for (int i = 0; i < menu.size(); i++) {
-            System.out.println((i + 1) + " - " + menu.get(i).getInfo());
+        System.out.println("Menu for " + name + ":");
+        for (MenuItem item : menu) {
+            System.out.println(item);
         }
     }
 }

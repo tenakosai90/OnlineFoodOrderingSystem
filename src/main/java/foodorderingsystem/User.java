@@ -1,19 +1,19 @@
 package foodorderingsystem;
-/*Encapsulation */
-public class User {
-    private String name;
-    private String phone;
 
-    public User(String name, String phone){
-        this.name=name;
-        this.phone=phone;
+public class User {
+    protected String name;
+    protected String phoneNumber;
+
+    public User(String name, String phoneNumber) {
+        this.name = name;
+        this.phoneNumber = phoneNumber;
     }
-    
-    public String getName(){
+
+    public String getName() {
         return name;
     }
 
-    public String getPhone(){
-        return phone;
+    public String getPhoneNumber() {
+        return phoneNumber;
     }
 }
