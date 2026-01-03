@@ -1,6 +1,7 @@
 package foodorderingsystem;
 
 public class MenuItem {
+
     private String name;
     private double price;
 
@@ -20,7 +21,14 @@ public class MenuItem {
         return price;
     }
 
+    // Used for clean menu display
     public String getInfo() {
+        return name + " - " + price + " TL";
+    }
+
+    // 🔥 IMPORTANT FIX: makes printing readable
+    @Override
+    public String toString() {
         return name + " - " + price + " TL";
     }
 }
