@@ -88,9 +88,17 @@ public class Restaurant {
      * Displays the restaurant menu on the console.
      */
     public void showMenu() {
-        System.out.println("Menu for " + name + ":");
-        for (MenuItem item : menu) {
-            System.out.println(item);
-        }
+    System.out.println("Menu for " + name + ":");
+
+    if (menu.isEmpty()) {
+        System.out.println("No items available.");
+        return;
     }
+
+    for (int i = 0; i < menu.size(); i++) {
+        MenuItem item = menu.get(i);
+        System.out.println((i + 1) + ". " + item.getInfo());
+    }
+}
+
 }
