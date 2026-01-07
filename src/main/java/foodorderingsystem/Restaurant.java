@@ -85,20 +85,33 @@ public class Restaurant {
     }
 
     /**
-     * Displays the restaurant menu on the console.
+     * Removes a menu item using its displayed number (1-based index).
+     * Useful for restaurant owners when managing the menu.
+     *
+     * @param number the menu item number shown to the user
+     * @return true if removal was successful, false otherwise
+     */
+    public boolean removeMenuItemByNumber(int number) {
+        if (number < 1 || number > menu.size()) {
+            return false;
+        }
+        menu.remove(number - 1);
+        return true;
+    }
+
+    /**
+     * Displays the restaurant menu with numbered items.
      */
     public void showMenu() {
-    System.out.println("Menu for " + name + ":");
+        System.out.println("Menu for " + name + ":");
 
-    if (menu.isEmpty()) {
-        System.out.println("No items available.");
-        return;
+        if (menu.isEmpty()) {
+            System.out.println("No items available.");
+            return;
+        }
+
+        for (int i = 0; i < menu.size(); i++) {
+            System.out.println((i + 1) + ". " + menu.get(i).getInfo());
+        }
     }
-
-    for (int i = 0; i < menu.size(); i++) {
-        MenuItem item = menu.get(i);
-        System.out.println((i + 1) + ". " + item.getInfo());
-    }
-}
-
 }
