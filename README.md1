@@ -1,0 +1,22 @@
+# Online Food Ordering System (OOP - Java)
+
+## Overview
+A simple console-based Online Food Ordering System implemented in Java using OOP principles:
+- Encapsulation, inheritance, interfaces, polymorphism
+- Payment strategy (Cash / Card)
+- Unit testing with JUnit 5 + Maven
+
+## Project Structure
+- `src/main/java/foodorderingsystem` : main source code
+- `src/test/java/foodorderingsystem` : JUnit tests
+- `docs/` : project report (PDF)
+
+## Requirements
+- Java 17+
+- Maven 3+
+
+## How to Run (Main Class)
+From project root:
+```bash
+mvn clean compile
+mvn exec:java -Dexec.mainClass="foodorderingsystem.FoodOrderingSystem"
