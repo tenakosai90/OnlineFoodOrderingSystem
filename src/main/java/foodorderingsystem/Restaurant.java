@@ -3,115 +3,75 @@ package foodorderingsystem;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * Represents a restaurant in the Online Food Ordering System.
- * A restaurant has an identifier, a name, and a menu consisting
- * of multiple menu items. It provides functionality to manage
- * the restaurant menu.
- */
 public class Restaurant {
 
     private int id;
     private String name;
     private List<MenuItem> menu;
 
-    /**
-     * Creates a restaurant with the given id and name.
-     * This constructor is required for unit tests.
-     *
-     * @param id   the unique identifier of the restaurant
-     * @param name the name of the restaurant
-     */
+    // REQUIRED by tests
     public Restaurant(int id, String name) {
         this.id = id;
         this.name = name;
         this.menu = new ArrayList<>();
     }
 
-    /**
-     * Creates a restaurant with the given name.
-     * This constructor is provided for demo convenience.
-     *
-     * @param name the name of the restaurant
-     */
+    // Optional (demo convenience)
     public Restaurant(String name) {
         this(0, name);
     }
 
-    /**
-     * Returns the restaurant id.
-     *
-     * @return restaurant id
-     */
     public int getId() {
         return id;
     }
 
-    /**
-     * Returns the restaurant name.
-     *
-     * @return restaurant name
-     */
     public String getName() {
         return name;
     }
 
-    /**
-     * Returns the list of menu items of the restaurant.
-     *
-     * @return list of MenuItem objects
-     */
     public List<MenuItem> getMenu() {
         return menu;
     }
 
-    /**
-     * Adds a menu item to the restaurant menu.
-     *
-     * @param item the MenuItem to add
-     */
+    public int getMenuSize() {
+        return menu.size();
+    }
+
     public void addMenuItem(MenuItem item) {
         menu.add(item);
     }
 
-    /**
-     * Removes a menu item from the restaurant menu.
-     * This method is required for unit tests.
-     *
-     * @param item the MenuItem to remove
-     */
+    // REQUIRED by tests
     public void removeMenuItem(MenuItem item) {
         menu.remove(item);
     }
 
-    /**
-     * Removes a menu item using its displayed number (1-based index).
-     * Useful for restaurant owners when managing the menu.
-     *
-     * @param number the menu item number shown to the user
-     * @return true if removal was successful, false otherwise
-     */
+    // ✅ Remove by displayed number (1..n)
     public boolean removeMenuItemByNumber(int number) {
-        if (number < 1 || number > menu.size()) {
-            return false;
-        }
-        menu.remove(number - 1);
+        int index = number - 1;
+        if (index < 0 || index >= menu.size()) return false;
+        menu.remove(index);
         return true;
     }
 
-    /**
-     * Displays the restaurant menu with numbered items.
-     */
+    // ✅ Update by displayed number (1..n)
+    // MenuItem has no setters, so we replace the object
+    public boolean updateMenuItemByNumber(int number, String newName, double newPrice) {
+        int index = number - 1;
+        if (index < 0 || index >= menu.size()) return false;
+        menu.set(index, new MenuItem(newName, newPrice));
+        return true;
+    }
+
+    // ✅ Numbered menu display: 1,2,3...
     public void showMenu() {
         System.out.println("Menu for " + name + ":");
-
         if (menu.isEmpty()) {
-            System.out.println("No items available.");
+            System.out.println("(empty)");
             return;
         }
-
         for (int i = 0; i < menu.size(); i++) {
-            System.out.println((i + 1) + ". " + menu.get(i).getInfo());
+            System.out.println((i + 1) + ". " + menu.get(i));
         }
     }
 }
